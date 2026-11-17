@@ -1,0 +1,1181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #4361ee;
+    --secondary: #3f37c9;
+    --accent: #4895ef;
+    --bg: #e8ecf1;
+    --card-bg: #ffffff;
+    --text: #1e3a5f;
+    --text-secondary: #4a6fa5;
+    --heading: #0f2a4a;
+    --border: #c8d6e5;
+    --success: #06d6a0;
+    --warning: #ffd166;
+    --danger: #ef476f;
+}
+
+[data-theme="dark"] {
+    --bg: #0f1923;
+    --card-bg: #1a2a3a;
+    --text: #a8c4d9;
+    --text-secondary: #6b8fad;
+    --heading: #d0e4f2;
+    --border: #2a3f55;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.5s, color 0.5s;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+[data-theme="dark"] body {
+    background: var(--bg);
+    color: var(--text);
+}
+header {
+    background: var(--card-bg);
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0.8rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--primary);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.2rem;
+    min-width: 0;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--heading);
+    font-weight: 500;
+    transition: color 0.3s;
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+[data-theme="dark"] .nav-links a {
+    color: var(--text);
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+    flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+    border-color: var(--primary);
+    transform: rotate(180deg);
+}
+
+.teacher-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--text);
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    flex: 1;
+}
+
+.section {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    color: var(--heading);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+[data-theme="dark"] h2 {
+    color: var(--heading);
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+.hero {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--heading);
+    font-weight: 800;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+[data-theme="dark"] .hero h1 {
+    color: var(--heading);
+}
+
+.motto {
+    background: var(--primary);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+.motto h2 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.timer-section {
+    margin-top: 2rem;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.countdown-item {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+    min-width: 80px;
+}
+
+.countdown-item span {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.countdown-item small {
+    color: var(--text-secondary);
+}
+
+.add-post, .add-event, .add-homework, .create-poll,
+.add-resource, .add-achievement, .add-competition,
+.add-report, .add-transaction, .add-birthday, .rating-controls,
+.calc-add {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+input, textarea, select {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1rem;
+    min-width: 150px;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+textarea {
+    flex: 2;
+    min-height: 60px;
+    resize: vertical;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+.posts-container, .events-container, .homework-container,
+.polls-container, .resources-container,
+.achievements-container, .competitions-container,
+.reports-container, .transactions-container,
+.birthdays-container, .rating-container, .calc-results,
+.schedule-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 700px) {
+    .posts-container, .events-container, .homework-container,
+    .polls-container, .resources-container,
+    .achievements-container, .competitions-container,
+    .reports-container, .transactions-container,
+    .birthdays-container, .rating-container, .calc-results,
+    .schedule-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+    border-left: 4px solid var(--primary);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.card-date {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.card-text {
+    color: var(--text);
+}
+
+.event-control { border-left-color: var(--danger); }
+.event-project { border-left-color: var(--warning); }
+.event-holiday { border-left-color: var(--success); }
+.event-vacation { border-left-color: var(--accent); }
+
+.poll-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.poll-option:hover {
+    border-color: var(--primary);
+}
+
+.poll-progress {
+    height: 20px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.poll-progress-bar {
+    height: 100%;
+    background: var(--primary);
+    transition: width 0.5s;
+}
+
+.resource-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.resource-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.resource-link:hover {
+    text-decoration: underline;
+}
+
+.resource-type {
+    background: var(--primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+}
+
+.emblem {
+    text-align: center;
+    padding: 2rem;
+}
+
+.emblem-placeholder {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+}
+
+.wallet-summary {
+    background: var(--success);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.balance {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.transaction-income { color: var(--success); }
+.transaction-expense { color: var(--danger); }
+
+.birthday-card {
+    text-align: center;
+    background: var(--warning);
+    color: #1a1a2e;
+}
+
+.birthday-card .card-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.birthday-date {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.rating-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rating-table th, .rating-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.rating-table th {
+    background: var(--primary);
+    color: white;
+}
+
+.rating-table tr:hover {
+    background: var(--bg);
+}
+
+.report-card {
+    border-left-color: var(--success);
+}
+
+.achievement-card {
+    border-left-color: var(--warning);
+}
+
+.competition-card {
+    border-left-color: var(--accent);
+}
+
+.competition-points {
+    background: var(--primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 2.5rem;
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    border-top: 3px solid var(--primary);
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--card-bg);
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 2px solid var(--border);
+        gap: 0;
+    }
+
+    .nav-links a {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    nav {
+        padding: 0.8rem 0.5rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .countdown {
+        flex-wrap: wrap;
+    }
+
+    .add-post, .add-event, .add-homework, .create-poll,
+    .add-resource, .add-achievement, .add-competition,
+    .add-transaction, .rating-controls, .calc-add {
+        flex-direction: column;
+    }
+
+    input, textarea, select {
+        width: 100%;
+    }
+}
+
+.delete-btn {
+    background: var(--danger);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+.delete-btn:hover {
+    background: #d63031;
+}
+
+/* ===== КАЛЬКУЛЯТОР ===== */
+.calculator-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+    margin-bottom: 2rem;
+}
+
+.calc-add {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.calc-add input {
+    flex: 1;
+    min-width: 120px;
+}
+
+.calc-subject-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+}
+
+.calc-subject-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calc-subject-header strong {
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.calc-grade-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.calc-grade {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+}
+
+.calc-grade-5 { background: #06d6a0; }
+.calc-grade-4 { background: #4895ef; }
+.calc-grade-3 { background: #ffd166; color: #333; }
+.calc-grade-2 { background: #ef476f; }
+
+.calc-average {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    margin-top: 0.5rem;
+}
+
+.calc-delete-btn {
+    background: var(--danger);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+    border-radius: 4px;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    border: 2px solid var(--border);
+    position: relative;
+    animation: modalSlide 0.3s ease;
+}
+
+@keyframes modalSlide {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content h2 {
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.modal-content p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0.3rem;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: var(--danger);
+}
+
+.admin-only {
+    display: none;
+}
+
+.authenticated .admin-only {
+    display: flex;
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 0.3rem;
+    color: var(--text-secondary);
+    transition: color 0.3s;
+}
+
+.toggle-password:hover {
+    color: var(--primary);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/* Планшеты */
+@media (max-width: 1024px) {
+    .nav-links {
+        gap: 0.6rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.8rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+}
+
+/* Мобильные */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--card-bg);
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 2px solid var(--border);
+        gap: 0;
+    }
+
+    .nav-links a {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    nav {
+        padding: 0.8rem 0.5rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .motto {
+        padding: 1.5rem;
+    }
+
+    .countdown {
+        flex-wrap: wrap;
+    }
+
+    .countdown-item {
+        min-width: 60px;
+        padding: 0.5rem;
+    }
+
+    .countdown-item span {
+        font-size: 1.5rem;
+    }
+
+    .add-post, .add-event, .add-homework, .create-poll,
+    .add-resource, .add-achievement, .add-competition,
+    .add-report, .add-transaction, .add-birthday, .rating-controls,
+    .calc-add {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        min-width: auto;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .resource-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .wallet-summary {
+        padding: 1.5rem;
+    }
+
+    .balance {
+        font-size: 1.5rem;
+    }
+
+    .birthday-card .card-text {
+        font-size: 1.2rem;
+    }
+
+    .calc-subject-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .calc-average {
+        font-size: 1.2rem;
+    }
+
+    .emblem-placeholder {
+        font-size: 3rem;
+    }
+
+    .theme-toggle, .teacher-btn {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+    }
+
+    .teacher-btn {
+        margin-left: 0.2rem;
+    }
+}
+
+/* Маленькие телефоны */
+@media (max-width: 480px) {
+    nav {
+        padding: 0.6rem;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    main {
+        padding: 0.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .hero h1 {
+        font-size: 1.3rem;
+    }
+
+    .countdown-item {
+        min-width: 50px;
+        padding: 0.4rem;
+    }
+
+    .countdown-item span {
+        font-size: 1.2rem;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .modal-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .password-wrapper input {
+        font-size: 1rem;
+        padding: 0.8rem 2.5rem 0.8rem 0.8rem;
+    }
+
+    .toggle-password {
+        font-size: 1.1rem;
+    }
+}
+
+/* Большие экраны */
+@media (min-width: 1400px) {
+    main {
+        max-width: 1400px;
+    }
+}
+
+/* Горизонтальная ориентация на телефоне */
+@media (max-height: 500px) and (orientation: landscape) {
+    .modal-content {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .nav-links {
+        padding: 0.5rem;
+    }
+}
+
+/* Улучшение тач-интерфейса */
+@media (hover: none) and (pointer: coarse) {
+    button, .nav-links a, .poll-option {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .delete-btn, .calc-delete-btn {
+        min-height: 36px;
+        min-width: 36px;
+    }
+}
+
+/* ===== РАСПИСАНИЕ ===== */
+.schedule-container {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.schedule-day-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+}
+
+.schedule-day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary);
+}
+
+.schedule-day-header strong {
+    font-size: 1.3rem;
+    color: var(--primary);
+}
+
+.schedule-lesson {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.schedule-lesson:last-child {
+    border-bottom: none;
+}
+
+.lesson-number {
+    background: var(--primary);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.lesson-subject {
+    flex: 1;
+    font-size: 1.1rem;
+}
+
+.schedule-delete-btn {
+    background: var(--danger);
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+
+.add-schedule {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+    margin-bottom: 2rem;
+}
+
+.add-schedule select,
+.add-schedule input {
+    flex: 1;
+    min-width: 120px;
+}
+
+@media (max-width: 768px) {
+    .add-schedule {
+        flex-direction: column;
+    }
+    
+    .add-schedule select,
+    .add-schedule input,
+    .add-schedule button {
+        width: 100%;
+    }
+}
+
+/* ===== КАСТОМНЫЙ СКРОЛЛБАР ===== */
+/* Для Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 14px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-left: 1px solid var(--border);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+    border: 3px solid var(--bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+}
+
+/* Для Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) var(--bg);
+}
+
+/* ===== ПЛАВНЫЕ ПЕРЕХОДЫ ===== */
+button, .card, .add-post, .add-event, .add-homework, .create-poll,
+.add-resource, .add-achievement, .add-competition, .add-report,
+.add-transaction, .add-birthday, .rating-controls, .calc-add,
+.add-schedule, .nav-links a, .theme-toggle, .teacher-btn,
+.poll-option, .resource-card, .birthday-card, .countdown-item {
+    transition: all 0.3s ease;
+}
+
+/* Улучшенные кнопки */
+button {
+    background: var(--primary);
+}
+
+button:hover {
+    background: var(--secondary);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Улучшенные карточки */
+.card {
+    border: 2px solid var(--border);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+
+/* Улучшенные формы */
+input, textarea, select {
+    transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--primary);
+}
+
+/* Улучшенная навигация */
+.nav-links a {
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Улучшенные опросы */
+.poll-option:hover {
+    transform: translateX(5px);
+}
+
+/* Улучшенный герб */
+.emblem-placeholder {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Улучшенные именинники */
+.birthday-card {
+    transition: transform 0.3s;
+}
+
+.birthday-card:hover {
+    transform: scale(1.03);
+}
+
+/* Улучшенный таймер */
+.countdown-item {
+    transition: transform 0.3s;
+}
+
+.countdown-item:hover {
+    transform: scale(1.05);
+}
